@@ -1,0 +1,29 @@
+int Led1 = 5;
+int Bot1 = 3;
+int Bot2 = 4;
+int Contr = 0;
+
+void setup()
+{
+  pinMode(Led1,OUTPUT);
+  pinMode(Bot1,INPUT);
+  pinMode(Bot2,INPUT);
+  
+}
+
+void loop()
+{
+  if(digitalRead(Bot1) == 1){
+  	Contr = 1;
+  }
+  
+  digitalWrite(Led1,LOW);
+
+  while(Contr == 1){
+  	digitalWrite(Led1,HIGH);
+  
+    if(digitalRead(Bot2) == 1){
+  		Contr = 0;
+    }
+  }    
+}

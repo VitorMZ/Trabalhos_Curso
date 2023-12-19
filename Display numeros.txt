@@ -1,0 +1,193 @@
+int Bot1 = 3;
+int Bot2 = 4;
+int Bot3 = 5;
+int DB1 = 0;
+int DB2 = 0;
+int DB3 = 0;
+int A = 6;
+int B = 7;
+int C = 8;
+int D = 9;
+int E = 10;
+int F = 11;
+int G = 12;
+
+bool ABool = false;
+bool BBool = false;
+bool CBool = false;
+bool DBool = false;
+bool EBool = false;
+bool FBool = false;
+bool GBool = false;
+
+
+int Inter = 0;
+int Count = 0;
+int i = 0;
+
+void setup() {
+    pinMode(Bot1,INPUT);
+    pinMode(Bot2,INPUT);
+    pinMode(Bot3,INPUT);
+    pinMode(A,OUTPUT);
+    pinMode(B,OUTPUT);
+    pinMode(C,OUTPUT);
+    pinMode(D,OUTPUT);
+    pinMode(E,OUTPUT);
+    pinMode(F,OUTPUT);
+    pinMode(G,OUTPUT);
+}
+
+void loop() {
+
+DB1 = digitalRead(Bot1);
+
+if (DB1 == 1){
+    Inter = 1;
+}
+  
+if(DB1 == 0){
+  if (Inter == 1){
+    Count = 1;
+    Inter = 0;
+  }
+}
+
+  while(Count == 1){
+    DB1 = digitalRead(Bot1);
+    DB2 = digitalRead(Bot2);
+    DB3 = digitalRead(Bot3);
+
+    digitalWrite (A,ABool);
+    digitalWrite (B,BBool);
+    digitalWrite (C,CBool);
+    digitalWrite (D,DBool);
+    digitalWrite (E,EBool);
+    digitalWrite (F,FBool);
+    digitalWrite (G,GBool);
+
+    if (i == 0){
+      ABool = false;
+      BBool = false;
+      CBool = false;  
+      DBool = false;
+      EBool = false;
+      FBool = false;
+      GBool = true;
+    }
+
+    if (i == 1){
+      ABool = true; 
+      BBool = false; 
+      CBool = false;  
+      DBool = true; 
+      EBool = true; 
+      FBool = true; 
+      GBool = true; 
+    }
+
+    if (i == 2){            
+      ABool = false; 
+      BBool = false; 
+      CBool = true;   
+      DBool = false; 
+      EBool = false; 
+      FBool = true; 
+      GBool = false; 
+    }
+
+    if (i == 3){ 
+      ABool = false;  
+      BBool = false;  
+      CBool = false;    
+      DBool = false;  
+      EBool = true;  
+      FBool = true;  
+      GBool = false;  
+    }
+
+    if (i == 4){
+      ABool = true;  
+      BBool = false;  
+      CBool = false;   
+      DBool = true;  
+      EBool = true;  
+      FBool = false;  
+      GBool = false;  
+    }
+
+    if (i == 5){
+      ABool = false; 
+      BBool = true; 
+      CBool = false;  
+      DBool = false; 
+      EBool = true; 
+      FBool = false; 
+      GBool = false; 
+    }
+
+    if (i == 6){
+      ABool = false; 
+      BBool = true; 
+      CBool = false; 
+      DBool = false; 
+      EBool = false; 
+      FBool = false; 
+      GBool = false; 
+    }
+
+    if (i == 7){
+      ABool = false; 
+      BBool = false; 
+      CBool = false;   
+      DBool = true; 
+      EBool = true; 
+      FBool = true; 
+      GBool = true; 
+    }
+
+    if (i == 8){
+      ABool = false; 
+      BBool = false; 
+      CBool = false;  
+      DBool = false; 
+      EBool = false; 
+      FBool = false; 
+      GBool = false; 
+    }
+
+    if (i == 9){
+      ABool = false; 
+      BBool = false; 
+      CBool = false;   
+      DBool = false; 
+      EBool = true; 
+      FBool = false; 
+      GBool = false; 
+    }
+
+    i++;
+
+    if(i > 9){
+      i = 0;
+    }
+
+    if (DB2 == 1){
+      Count = 0;
+    }
+
+    if (DB3 == 1){
+      i = 0;
+      ABool = false;
+      BBool = false;
+      CBool = false;  
+      DBool = false;
+      EBool = false;
+      FBool = false;
+      GBool = true;
+      Count = 0;
+    }
+     delay (1000);
+
+  }
+}

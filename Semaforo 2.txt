@@ -1,0 +1,83 @@
+int Bot1 = 3;
+int Bot2 = 4;
+int Bot3 = 5;
+int L1 = 6;
+int L2 = 7;
+int L3 = 8;
+int L4 = 9;
+int DBot1 = 0;
+int DBot2 = 0;
+int DBot3 = 0;
+int Cont = 0;
+int Cont2 = 0;
+int Cont3 = 0;
+int Inter = 0;
+bool ciclo1 = true;
+bool ciclo2 = false;
+
+void setup() {
+  pinMode(Bot1,INPUT);
+  pinMode(Bot2,INPUT);
+  pinMode(Bot3,INPUT);
+  pinMode(L1,OUTPUT);
+  pinMode(L2,OUTPUT);
+  pinMode(L3,OUTPUT);
+  pinMode(L4,OUTPUT);
+
+}
+
+void loop() {
+
+DBot1 = digitalRead(Bot1);
+DBot2 = digitalRead(Bot2);
+DBot3 = digitalRead(Bot3);
+
+  if (DBot1 == 1){
+    Inter = 1;
+    
+  }
+  
+  if(DBot1 == 0){
+    if (Inter == 1){
+      Cont = Cont + 1;
+      Inter = 0;
+    }
+  }
+
+  while(Cont == 1){
+
+    DBot2 = digitalRead(Bot2);
+    DBot3 = digitalRead(Bot3);
+
+    digitalWrite (L2,!ciclo1);
+    digitalWrite (L3,ciclo2);
+    digitalWrite (L1,ciclo1);
+    digitalWrite (L4,!ciclo2);
+    delay(2000);
+    
+    if(ciclo1 == true){
+      ciclo1 = false;
+      ciclo2 = true;
+    }
+    else{
+      ciclo1 = true;
+      ciclo2 = false;
+    }
+
+    if(DBot3 == 1){
+      ciclo1 = false;
+      ciclo2 = false;
+      
+    }
+
+    if (DBot2 == 1){
+      digitalWrite (L1,LOW);
+      digitalWrite (L4,LOW);
+      digitalWrite (L2,LOW);
+      digitalWrite (L3,LOW);
+      Cont = 0;
+
+    }
+  }
+  
+}
